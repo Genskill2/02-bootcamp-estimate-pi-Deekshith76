@@ -1,5 +1,6 @@
 import math
 import unittest
+from random import *
 
 class TestWallis(unittest.TestCase):
     def test_low_iters(self):
@@ -34,6 +35,20 @@ class TestMC(unittest.TestCase):
         product *= val
         pi_val = 2*product
         return pi_val
+ 
+
+def monte_carlo(n):
+    circle_points = 0
+    square_points = 0
+    for i in range(n):
+        p = random()
+        q = random()
+        if (p**2 + q**2 <=1):
+            circle_points += 1
+        square_points += 1
+    ratio = circle_points/square_points
+    pi_val = 4*ratio
+    return pi_val
         
 if __name__ == "__main__":
     unittest.main()
